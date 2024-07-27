@@ -63,12 +63,15 @@ class GameManager:
             self.games[room]['game'].reset()
             self.games[room]['created_at'] = datetime.now()
 
+    def get_expired_rooms(self):
+        return [room for room, data in self.games.items()
+                if data['game'].is_expired(data['created_at'] + self.room_expiry_duration)]
+
     def cleanup_expired_games(self, socketio):
         """
         Remove games that have expired based on the room_expiry_duration.
         """
-        expired_rooms = [room for room, data in self.games.items()
-                         if data['game'].is_expired(data['created_at'] + self.room_expiry_duration)]
+        expired_rooms = self.get_expired_rooms()
         for room in expired_rooms:
             logger.info(f"Removing expired game room: {room}")
             socketio.emit('room_expired', {'message': 'This game room has expired due to inactivity.'}, room=room)
