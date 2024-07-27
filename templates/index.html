@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <style>
+        table { border-collapse: collapse; margin: 20px auto; }
+        td { width: 60px; height: 60px; text-align: center; border: 1px solid #000; font-size: 2em; cursor: pointer; }
+        #roomIdDisplay { font-size: 1.2em; margin: 10px; }
+        #copyBtn { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1 align="center">Tic-Tac-Toe</h1>
+    <div align="center">
+        <button onclick="startNewGame()">Start New Game</button>
+        <br><br>
+        <input type="text" id="roomIdInput" placeholder="Enter room ID to join">
+        <button onclick="joinGame()">Join Game</button>
+        <br><br>
+        <div id="roomIdDisplay" style="display: none;">
+            <span id="roomIdText"></span>
+            <button id="copyBtn" onclick="copyRoomId()">Copy Room ID</button>
+        </div>
+    </div>
+    <table align="center">
+        <tr><td data-row="0" data-col="0"></td><td data-row="0" data-col="1"></td><td data-row="0" data-col="2"></td></tr>
+        <tr><td data-row="1" data-col="0"></td><td data-row="1" data-col="1"></td><td data-row="1" data-col="2"></td></tr>
+        <tr><td data-row="2" data-col="0"></td><td data-row="2" data-col="1"></td><td data-row="2" data-col="2"></td></tr>
+    </table>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
