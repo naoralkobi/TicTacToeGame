@@ -74,18 +74,29 @@ The win condition is checked after each move using the `check_winner()` method i
 
 If any of these conditions are met, the method returns the winning player ('X' or 'O'). If no winner is found, it returns `None`.
 
-## Running the Application
+## Setting Up the Environment
 
 To run the application, follow these steps:
 
-1. Install the required packages:
+1. **Create and Activate a Virtual Environment**
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+2. **Install the Required Packages**
+
    ```bash
    pip install flask flask-socketio
    ```
 
-2. Start the Flask server:
+3. **Start the Flask Server**
+
    ```bash
    python app.py
    ```
 
-3. Open a web browser and go to `http://localhost:5454` to play the game.
+4. **Open a Web Browser**
+
+   Go to `http://localhost:5454` to play the game.
